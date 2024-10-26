@@ -1,0 +1,86 @@
+{% extends 'homepage/base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Power BI DAX Course</title>
+    <!-- Embedded CSS -->
+    <style>
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            border-radius: 5px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .container {
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .content-list ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+        .content-list ul li {
+            margin: 10px 0;
+            font-size: 16px;
+            background-color: #e6f7ff;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .pricing {
+            font-size: 20px;
+            color: #ff4500;
+            font-weight: bold;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .enroll-button {
+            display: inline-block;
+            text-decoration: none;
+            color: white;
+            background-color: #28a745;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-align: center;
+            transition: background-color 0.3s ease;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .enroll-button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Power BI DAX Course</h1>
+    </div>
+    <div class="container">
+        <h2>Learn Power BI DAX from Scratch!</h2>
+        <p>
+            Master the art of data analysis and visualization using Power BI's powerful DAX functions. This course is designed to take you from beginner to advanced level, providing real-world applications of DAX in data modeling and reporting.
+        </p>
+        <h3>Course Content Includes:</h3>
+        <div class="content-list">
+            <ul>
+                <li>Introduction to Power BI and DAX</li>
+                <li>Understanding DAX Basics: Calculated Columns and Measures</li>
+                <li>Data Types and Operators in DAX</li>
+                <li>Filtering and Context in DAX Formulas</li>
+                <li>Advanced DAX Functions: SUMX, CALCULATE, ALL, and more</li>
+                <li>Time Intelligence: Year-to-Date, Month-to-Date, and Rolling Calculations</li>
+                <li>Performance Optimization Techniques in DAX</li>
+                <li>Hands-on Projects and Real-World Scenarios</li>
+            </ul>
+        </div>
+        <p class="pricing">Price: $99</p>
+       <center> <a href="#" class="enroll-button">Enroll Now</a> </center>
+    </div>
+{% endblock %}

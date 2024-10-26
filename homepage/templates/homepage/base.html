@@ -1,0 +1,163 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodingDidi</title>
+    <style>
+        /* Navbar Section */
+        .navbar {
+            background-color: #fff;
+            padding: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+        
+        .navbar-logo {
+            margin-left: 40px;
+            font-size: 1.5rem;
+            color: #6a0dad;
+            font-weight: bold;
+        }
+        
+        .navbar-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .navbar-links a {
+            text-decoration: none;
+            color: #000;
+            font-weight: 500;
+        }
+        
+        .navbar-links a:hover {
+            color: #6a0dad;
+        }
+        
+        .navbar-actions {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .navbar-actions button {
+            background-color: #6a0dad;
+            color: white;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+        
+        .navbar-actions button:hover {
+            background-color: #4b007d;
+        }
+        
+        /* Main Menu */
+        .main-menu {
+            padding: 0.5rem;
+            background-color: #eee;
+            text-align: center;
+        }
+        
+        .main-menu a {
+            margin: 0 1rem;
+            text-decoration: none;
+            color: #6a0dad;
+            font-weight: bold;
+        }
+        
+        .main-menu a:hover {
+            color: #4b007d;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="navbar-logo">&lt;/&gt; CodingDidi</div>
+        <div class="navbar-links">
+            <a href="{% url 'index' %}">Home</a>
+            <a href="{% url 'index' %}">Courses</a>
+            <a href="{% url 'index' %}">Tutorial</a>
+            <a href="{% url 'index' %}">Blog</a>
+            <a href="{% url 'index' %}">Notes</a>
+            <a href="{% url 'index' %}">Contact</a>
+            <a href="{% url 'index' %}">My Gear</a>
+            <a href="{% url 'index' %}">Work With Us</a>
+        </div>
+        <div class="navbar-actions">
+            <button onclick="window.location.href='{% url 'login' %}'">Login</button>
+            <button onclick="window.location.href='{% url 'signup' %}'">Signup</button>
+        </div>
+    </header>
+
+    <!-- Main Menu -->
+    <nav class="main-menu">
+        <a href="{% url 'index' %}">HTML</a>
+        <a href="{% url 'index' %}">CSS</a>
+        <a href="{% url 'index' %}">JS</a>
+        <a href="{% url 'index' %}">Data Analysis</a>
+        <a href="{% url 'index' %}">AI</a>
+        <a href="{% url 'index' %}">PYTHON</a>
+        <a href="{% url 'index' %}">POWER BI</a>
+        <a href="{% url 'index' %}">Tableau</a>
+        <a href="{% url 'index' %}">Machine Learning</a>
+    </nav>
+
+    {% block content %}
+    {% endblock %}
+<!-- Testimonials Section -->
+<section style="margin-top: 3rem; padding: 3rem 0; background-color: #f9f9f9;">
+    <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 2rem; color: #333;">Testimonials</h2>
+    <div style="display: flex; justify-content: center; gap: 2rem; padding: 0 2rem;">
+        <!-- Testimonial 1 -->
+        <div style="background-color: #fff; padding: 2rem; border-radius: 8px; width: 45%; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
+            <blockquote style="font-style: italic; color: #555;">
+                <span style="font-size: 2rem; font-weight: bold; color: #6a0dad;">&ldquo;</span>
+                I don't have words to thank this girl, I'm really grateful to have this channel and website in my daily routine. If you're a mere beginner, then you can trust this guy and can put your time into his content. I can assure you that it'll be worth it.
+            </blockquote>
+            <p style="margin-top: 1.5rem; color: #333;">
+                <strong>Manal Dawood</strong><br>
+                <span style="color: #777;">Data Analyst</span>
+            </p>
+        </div>
+        <!-- Testimonial 2 -->
+        <div style="background-color: #fff; padding: 2rem; border-radius: 8px; width: 45%; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
+            <blockquote style="font-style: italic; color: #555;">
+                <span style="font-size: 2rem; font-weight: bold; color: #6a0dad;">&ldquo;</span>
+                For everyone who wants to level up their #Coding and #Dev skills - seriously, this channel is for you! Both basic and advanced stacks are covered on this channel, and one can learn according to his skill levels. And the icing on the cake is, everything is available for free.
+            </blockquote>
+            <p style="margin-top: 1.5rem; color: #333;">
+                <strong>Shekhar</strong><br>
+                <span style="color: #777;">Data Scientist</span>
+            </p>
+        </div>
+    </div>
+</section>
+
+
+<footer style="margin-top: 1rem; padding: 2rem 0; background-color: #f8f9fa; text-align: center;">
+    <div style="display: flex; justify-content: center; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+        <img src="{% static 'css/images/logo.png' %}" alt="CodingDidi Logo" style="border-radius: 50%; width: 50px;">
+        <span style="font-size: 1.5rem; color: #6a0dad; font-weight: bold;">CodingDidi</span>
+    </div>
+    <p style="color: #6c757d; margin-bottom: 1rem;">Copyright © 2024 CodingDidi.com</p>
+    <div>
+        <a href="https://www.facebook.com/profile.php?id=100094595401178" style="color: #007bff; margin: 0 0.5rem; text-decoration: none;">Facebook</a>
+        <a href="https://x.com/akanshayadav222" style="color: #007bff; margin: 0 0.5rem; text-decoration: none;">Twitter</a>
+        <a href="https://www.instagram.com/codingdidi" style="color: #007bff; margin: 0 0.5rem; text-decoration: none;">Instagram</a>
+        <a href="https://github.com/Akansha-yadav24" style="color: #007bff; margin: 0 0.5rem; text-decoration: none;">GitHub</a>
+        <a href="https://topmate.io/codingdidi" style="color: #007bff; margin: 0 0.5rem; text-decoration: none;">Topmate</a>
+    </div>
+</footer>
+    
+
+</body>
+</html>

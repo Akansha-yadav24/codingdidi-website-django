@@ -1,0 +1,690 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodingDidi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #fff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        /* Navbar Section */
+        .navbar {
+            background-color: #fff;
+            padding: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+        
+        .navbar-logo {
+            margin-left: 40px;
+            font-size: 1.5rem;
+            color: #6a0dad;
+            font-weight: bold;
+        }
+        
+        .navbar-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .navbar-links a {
+            text-decoration: none;
+            color: #000;
+            font-weight: 500;
+        }
+        
+        .navbar-links a:hover {
+            color: #6a0dad;
+        }
+        
+        .navbar-actions {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .navbar-actions button {
+            background-color: #6a0dad;
+            color: white;
+            padding: 0.5rem 1rem;
+            border: 1px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+        
+        .navbar-actions button:hover {
+            background-color: #4b007d;
+        }
+        
+        /* Main Menu */
+        .main-menu {
+            padding: 0.5rem;
+            background-color: #eee;
+            text-align: center;
+        }
+        
+        .main-menu a {
+            margin: 0 1rem;
+            text-decoration: none;
+            color: #6a0dad;
+            font-weight: bold;
+        }
+        
+        .main-menu a:hover {
+            color: #4b007d;
+        }
+        
+        /* Page Content */
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 100%;
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+            flex-grow: 1;
+        }
+        
+        .left-section {
+            margin-right: 100px;
+        }
+        
+        .left-section h1 {
+            font-size: 3rem;
+            color: black;
+            margin-bottom: 0.5rem;
+        }
+        
+        .left-section p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .button-group a {
+            display: block;
+            margin: 0.5rem 0;
+            padding: 0.75rem 1.5rem;
+            text-align: center;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: bold;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+        
+        .button-group .learn-btn {
+            background-color: #00a651;
+        }
+        
+        .button-group .learn-btn:hover {
+            background-color: #008a3e;
+        }
+        
+        .button-group .reference-btn {
+            background-color: #2b2b2b;
+        }
+        
+        .button-group .reference-btn:hover {
+            background-color: #1e1e1e;
+        }
+        
+        .button-group .certified-btn {
+            background-color: #ff7272;
+        }
+        
+        .button-group .certified-btn:hover {
+            background-color: #e65c5c;
+        }
+        
+        .right-section {
+            background-color: #f1f1f1;
+            padding: 1.5rem;
+            border-radius: 10px;
+        }
+        
+        .right-section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .code-box {
+            background-color: white;
+            border: 1px solid #ddd;
+            padding: 1rem;
+            border-radius: 5px;
+        }
+        
+        .code-box code {
+            font-size: 1.1rem;
+            color: crimson;
+        }
+        
+        .try-btn {
+            display: inline-block;
+            margin-top: 1rem;
+            background-color: #00a651;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            text-align: center;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        
+        .try-btn:hover {
+            background-color: #008a3e;
+        }
+        .button-container {
+            display: flex;
+            justify-content: left; /* Center the button horizontally */
+            margin-top: 2rem; /* Add some space above the button */
+            margin-left:100px;
+        }
+        
+        .explore-btn {
+            background-color: #007BFF; /* Change to your desired color */
+            color: white; /* Text color */
+            padding: 0.75rem 1.5rem; /* Button padding */
+            border-radius: 5px; /* Rounded corners */
+            text-decoration: none; /* Remove underline from link */
+            font-size: 1rem; /* Font size */
+            font-weight: bold; /* Bold text */
+            transition: background-color 0.3s ease; /* Smooth background color transition */
+        }
+        
+        .explore-btn:hover {
+            background-color: #0056b3; /* Darker shade for hover effect */
+        }
+        h1 {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 24px;
+            margin-bottom: 40px;
+        }
+        .search-box {
+            display: inline-block;
+            position: relative;
+        }
+        .search-box input[type="text"] {
+            width: 400px;
+            padding: 15px;
+            font-size: 18px;
+            border-radius: 25px;
+            border: none;
+        }
+        .search-box button {
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            background-color: #00b17a;
+            border: none;
+            padding: 0 20px;
+            border-radius: 0 25px 25px 0;
+            color: white;
+            cursor: pointer;
+            text-align: center;
+        }
+        .learntocodeh1 {
+            font-size: 70px;
+            font-weight: 700;
+            text-align: center;
+        }
+        .learntocodeh3 {
+            color: #6A5ACD;
+            font-weight: 700;
+            margin-top: 30px !important;
+            font-size: 23px;
+            text-align: center;
+        }
+        /* Testimonials Section */
+        .testimonial-section {
+            margin-top: 3rem;
+            padding: 3rem 0;
+            background-color: #f9f9f9;
+            position: relative;
+            text-align: center;
+        }
+        .testimonial-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+        .testimonial-container {
+            display: flex;
+            overflow: hidden;
+            width: 100%;
+        }
+        .testimonial-slide {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            transition: 0.5s;
+        }
+        .testimonial-item {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin: 0 1rem;
+            width: 45%;
+        }
+        .testimonial-item blockquote {
+            font-style: italic;
+            color: #555;
+        }
+        .testimonial-item blockquote span {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #6a0dad;
+        }
+        .testimonial-item p {
+            margin-top: 1.5rem;
+            color: #333;
+        }
+        .testimonial-item p span {
+            color: #777;
+        }
+        /* Navigation Arrows */
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            transform: translateY(-50%);
+        }
+        .prev {
+            left: 10px;
+        }
+        .next {
+            right: 10px;
+        }
+        /* Dots/Pagination */
+        .dots {
+            text-align: center;
+            margin-top: 1rem;
+        }
+        .dot {
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            cursor: pointer;
+        }
+        .dot.active {
+            background-color: #6a0dad;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="navbar-logo">&lt;/&gt; Codingdidi</div>
+        <div class="navbar-links">
+            <a href="{% url 'index' %}">Home</a>
+            <a href="#">Courses</a>
+            <a href="#">Tutorial</a>
+            <a href="#">Blog</a>
+            <a href="#">Notes</a>
+            <a href="#">Contact</a>
+            <a href="#">My Gear</a>
+            <a href="#">Work With Us</a>
+        </div>
+        <div class="navbar-actions">
+            <button onclick="window.location.href='{% url 'login' %}'">Login</button>
+            <button onclick="window.location.href='{% url 'signup' %}'">Signup</button>
+        </div>
+    </header>
+
+    <!-- Main Menu -->
+    <nav class="main-menu">
+        <a href="{% url 'powerbi' %}">HTML</a>
+        <a href="{% url 'powerbi' %}">CSS</a>
+        <a href="{% url 'powerbi' %}">JS</a>
+        <a href="{% url 'powerbi' %}">Data Analysis</a>
+        <a href="{% url 'powerbi' %}">AI</a>
+        <a href="{% url 'powerbi' %}">PYTHON</a>
+        <a href="{% url 'powerbi' %}">POWER BI</a>
+        <a href="{% url 'powerbi' %}">Tableau</a>
+        <a href="{% url 'powerbi' %}">Machine Learning</a>
+    </nav>
+
+
+
+
+
+    <div style="justify-content: center; margin-left:100px;">
+        <h1 class="learntocodeh1">Learn to Code</h1>
+        <h3 class="learntocodeh3">
+            <i style="color:#FFC0C7! important; margin-right: 20px; z-index: 1; fo
+            nt-size: 36px! important; vertical-align:bottom"></i>
+            "With the world's largest web developer site. "
+            </h3>
+            <br>
+        <div class="search-box">
+            <input type="text" placeholder="Search our tutorials, e.g., Python">
+            <button>Search</button>
+        </div>
+    </div>
+    <div class="button-container">
+        <a href="#" class="explore-btn">Explore Our Courses</a>
+    </div>
+    
+    <div class="container">
+        <!-- Left Section -->
+        <div class="left-section">
+            <h1>Python</h1>
+            <p>A popular programming language</p>
+            <div class="button-group">
+                <a href="#" class="learn-btn">Learn Python</a>
+                <a href="#" class="reference-btn">Python Reference</a>
+                <a href="#" class="certified-btn">Get Certified</a>
+            </div>
+        </div>
+
+        <!-- Right Section -->
+        <div class="right-section">
+            <h2>Python Example:</h2>
+            <div class="code-box">
+                <code>if 5 &gt; 2:<br>&nbsp;&nbsp;&nbsp;&nbsp;print("Five is greater than two!")</code>
+            </div>
+            <a href="#" class="try-btn">Try it Yourself</a>
+        </div>
+    </div>
+    <!-- HTML Block -->
+<div class="container">
+    <!-- Left Section -->
+    <div class="left-section">
+        <h1>HTML</h1>
+        <p>The standard markup language for creating web pages.</p>
+        <div class="button-group">
+            <a href="#" class="learn-btn">Learn HTML</a>
+            <a href="#" class="reference-btn">HTML Reference</a>
+            <a href="#" class="certified-btn">Get Certified</a>
+        </div>
+    </div>
+
+    <!-- Right Section -->
+    <div class="right-section">
+        <h2>HTML Example:</h2>
+        <div class="code-box">
+            <code>&lt;p&gt;Hello, World!&lt;/p&gt;</code>
+        </div>
+        <a href="#" class="try-btn">Try it Yourself</a>
+    </div>
+</div>
+
+<!-- CSS Block -->
+<div class="container">
+    <!-- Left Section -->
+    <div class="left-section">
+        <h1>CSS</h1>
+        <p>A style sheet language used for describing the look and formatting of a document written in HTML.</p>
+        <div class="button-group">
+            <a href="#" class="learn-btn">Learn CSS</a>
+            <a href="#" class="reference-btn">CSS Reference</a>
+            <a href="#" class="certified-btn">Get Certified</a>
+        </div>
+    </div>
+
+    <!-- Right Section -->
+    <div class="right-section">
+        <h2>CSS Example:</h2>
+        <div class="code-box">
+            <code>body {<br>&nbsp;&nbsp;background-color: lightblue;<br>}</code>
+        </div>
+        <a href="#" class="try-btn">Try it Yourself</a>
+    </div>
+</div>
+
+<!-- JS Block -->
+<div class="container">
+    <!-- Left Section -->
+    <div class="left-section">
+        <h1>JavaScript</h1>
+        <p>A programming language that lets you implement complex things on web pages.</p>
+        <div class="button-group">
+            <a href="#" class="learn-btn">Learn JavaScript</a>
+            <a href="#" class="reference-btn">JS Reference</a>
+            <a href="#" class="certified-btn">Get Certified</a>
+        </div>
+    </div>
+
+    <!-- Right Section -->
+    <div class="right-section">
+        <h2>JS Example:</h2>
+        <div class="code-box">
+            <code>console.log("Hello, World!");</code>
+        </div>
+        <a href="#" class="try-btn">Try it Yourself</a>
+    </div>
+</div>
+
+<!-- Data Analysis Block -->
+<div class="container">
+    <!-- Left Section -->
+    <div class="left-section">
+        <h1>Data Analysis</h1>
+        <p>The process of inspecting, cleaning, transforming, and modeling data.</p>
+        <div class="button-group">
+            <a href="#" class="learn-btn">Learn Data Analysis</a>
+            <a href="#" class="reference-btn">Data Analysis Reference</a>
+            <a href="#" class="certified-btn">Get Certified</a>
+        </div>
+    </div>
+
+    <!-- Right Section -->
+    <div class="right-section">
+        <h2>Data Analysis Example:</h2>
+        <div class="code-box">
+            <code>import pandas as pd<br>df = pd.read_csv("data.csv")</code>
+        </div>
+        <a href="#" class="try-btn">Try it Yourself</a>
+    </div>
+</div>
+
+<!-- AI Block -->
+<div class="container">
+    <!-- Left Section -->
+    <div class="left-section">
+        <h1>Artificial Intelligence</h1>
+        <p>The simulation of human intelligence in machines.</p>
+        <div class="button-group">
+            <a href="#" class="learn-btn">Learn AI</a>
+            <a href="#" class="reference-btn">AI Reference</a>
+            <a href="#" class="certified-btn">Get Certified</a>
+        </div>
+    </div>
+
+    <!-- Right Section -->
+    <div class="right-section">
+        <h2>AI Example:</h2>
+        <div class="code-box">
+            <code>import tensorflow as tf<br>model = tf.keras.Sequential()</code>
+        </div>
+        <a href="#" class="try-btn">Try it Yourself</a>
+    </div>
+</div>
+
+<!-- Power BI Block -->
+<div class="container">
+    <!-- Left Section -->
+    <div class="left-section">
+        <h1>Power BI</h1>
+        <p>A business analytics tool by Microsoft.</p>
+        <div class="button-group">
+            <a href="#" class="learn-btn">Learn Power BI</a>
+            <a href="#" class="reference-btn">Power BI Reference</a>
+            <a class="certified-btn" href="{% url 'powerbi' %}">Explore Power BI DAX Course</a>
+        </div>
+    </div>
+
+    <!-- Right Section -->
+    <div class="right-section">
+        <h2>Power BI Example:</h2>
+        <div class="code-box">
+            <code>SUMX(Sales, Sales[Profit])</code>
+        </div>
+        <a href="#" class="try-btn">Try it Yourself</a>
+    </div>
+</div>
+
+<!-- Tableau Block -->
+<div class="container">
+    <!-- Left Section -->
+    <div class="left-section">
+        <h1>Tableau</h1>
+        <p>A powerful data visualization tool.</p>
+        <div class="button-group">
+            <a href="#" class="learn-btn">Learn Tableau</a>
+            <a href="#" class="reference-btn">Tableau Reference</a>
+            <a href="#" class="certified-btn">Get Certified</a>
+        </div>
+    </div>
+
+    <!-- Right Section -->
+    <div class="right-section">
+        <h2>Tableau Example:</h2>
+        <div class="code-box">
+            <code>SUM([Sales])</code>
+        </div>
+        <a href="#" class="try-btn">Try it Yourself</a>
+    </div>
+</div>
+
+<!-- Machine Learning Block -->
+<div class="container">
+    <!-- Left Section -->
+    <div class="left-section">
+        <h1>Machine Learning</h1>
+        <p>A subset of AI focused on building systems that learn from data.</p>
+        <div class="button-group">
+            <a href="#" class="learn-btn">Learn Machine Learning</a>
+            <a href="#" class="reference-btn">ML Reference</a>
+            <a href="#" class="certified-btn">Get Certified</a>
+        </div>
+    </div>
+
+    <!-- Right Section -->
+    <div class="right-section">
+        <h2>Machine Learning Example:</h2>
+        <div class="code-box">
+            <code>from sklearn.model_selection import train_test_split</code>
+        </div>
+        <a href="#" class="try-btn">Try it Yourself</a>
+    </div>
+</div>
+
+<!-- Testimonials Section -->
+<section class="testimonial-section">
+    <h2>Testimonials</h2>
+    <div class="testimonial-container">
+        <!-- Testimonial Page 1 -->
+        <div class="testimonial-slide">
+            <div class="testimonial-item">
+                <blockquote>
+                    <span>&ldquo;</span>
+                    I don't have words to thank this girl, I'm really grateful to have this channel and website in my daily routine. If you're a mere beginner, then you can trust this guy and can put your time into his content. I can assure you that it'll be worth it.
+                </blockquote>
+                <p>
+                    <strong>Manal Dawood</strong><br>
+                    <span>Data Analyst</span>
+                </p>
+            </div>
+            <div class="testimonial-item">
+                <blockquote>
+                    <span>&ldquo;</span>
+                    For everyone who wants to level up their #Coding and #Dev skills - seriously, this channel is for you! Both basic and advanced stacks are covered on this channel, and one can learn according to his skill levels. And the icing on the cake is, everything is available for free.
+                </blockquote>
+                <p>
+                    <strong>Shekhar</strong><br>
+                    <span>Data Scientist</span>
+                </p>
+            </div>
+        </div>
+        <!-- Additional Testimonial Pages -->
+    </div>
+    <!-- Navigation Arrows -->
+    <button class="prev" onclick="plusSlides(-1)">&#10094;</button>
+    <button class="next" onclick="plusSlides(1)">&#10095;</button>
+    <!-- Dots/Pagination -->
+    <div class="dots">
+        <span class="dot" onclick="currentSlide(0)"></span>
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <!-- Add more dots as needed -->
+    </div>
+</section>
+
+<script>
+    let slideIndex = 0;
+    const slides = document.getElementsByClassName('testimonial-slide');
+    const dots = document.getElementsByClassName('dot');
+
+    showSlides(slideIndex);
+
+    function showSlides(n) {
+        if (n >= slides.length) { slideIndex = 0; }
+        if (n < 0) { slideIndex = slides.length - 1; }
+
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].style.display = 'none';
+        }
+
+        for (let i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(' active', '');
+        }
+
+        slides[slideIndex].style.display = 'flex';
+        dots[slideIndex].className += ' active';
+    }
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+</script>
+
+<footer style="margin-top: 1rem; padding: 2rem 0; background-color: #f8f9fa; text-align: center;">
+    <div style="display: flex; justify-content: center; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+        <img src="{% static 'css/images/logo.png' %}" alt="CodingDidi Logo" style="border-radius: 50%; width: 50px;">
+        <span style="font-size: 1.5rem; color: #6a0dad; font-weight: bold;">CodingDidi</span>
+    </div>
+    <p style="color: #6c757d; margin-bottom: 1rem;">Copyright © 2024 CodingDidi.com</p>
+    <div>
+        <a href="https://www.facebook.com/profile.php?id=100094595401178" style="color: #007bff; margin: 0 0.5rem; text-decoration: none;">Facebook</a>
+        <a href="https://x.com/akanshayadav222" style="color: #007bff; margin: 0 0.5rem; text-decoration: none;">Twitter</a>
+        <a href="https://www.instagram.com/codingdidi" style="color: #007bff; margin: 0 0.5rem; text-decoration: none;">Instagram</a>
+        <a href="https://github.com/Akansha-yadav24" style="color: #007bff; margin: 0 0.5rem; text-decoration: none;">GitHub</a>
+        <a href="https://topmate.io/codingdidi" style="color: #007bff; margin: 0 0.5rem; text-decoration: none;">Topmate</a>
+    </div>
+</footer>
+
+</body>
+</html>
