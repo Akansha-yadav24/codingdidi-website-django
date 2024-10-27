@@ -103,5 +103,35 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / "static"]  # Ensure this directory exists
 
+
+
+
+
+import os
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Define database settings based on the environment
+if os.getenv("VERCEL_ENV") == "production":
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'codingdidi_db',
+            'USER': 'codingdidi_user',
+            'PASSWORD': 'October@2024',
+            'HOST': 'localhost',  #, e.g., localhost, or IP for remote host
+            'PORT': '3306',  # MySQL default port
+        }
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / "db.sqlite3",
+        }
+    }
+
+
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
